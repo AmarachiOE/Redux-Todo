@@ -8,7 +8,9 @@ import "./index.css";
 import App from "./App";
 
 const store = createStore(
-    rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 console.log("this is store:", store);
 

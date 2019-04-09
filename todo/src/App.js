@@ -24,15 +24,15 @@ const App = props => {
             type="string"
             name="newTask"
             value={props.newTask}
-            placeholder="What else?"
+            placeholder="Anything else?"
             onChange={e => {
               props.changeInputText(e.target.value);
             }}
           />
-          <button className="btn">Add Item</button>
+          <button className="btn add-btn">Add Item</button>
         </form>
         <button
-        className="btn"
+          className="btn clear-btn"
           onClick={e => {
             e.preventDefault();
             props.clearCompleted();
