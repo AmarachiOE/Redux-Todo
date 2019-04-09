@@ -1,5 +1,5 @@
 // import ACTION-TYPES
-import { ADD_NEW_TODO, CHANGE_INPUT_TEXT } from "../actions";
+import { ADD_NEW_TODO, CHANGE_INPUT_TEXT, TOGGLE_TASK } from "../actions";
 
 const initialState = {
     todos: [
@@ -23,16 +23,39 @@ const rootReducer = (state = initialState, action) => {
   console.log(state);
   switch (action.type) {
     case ADD_NEW_TODO:
+    // copy state
+    // for todos, copy state.todos and add new todos at end of list
+    // task: action.payload because action.payload = the newTodoTask in actions
+    // newTask: "" clears input field when button is eventually clicked
     return {
       ...state,
-      todos: [...state.todos, {task: action.payload, completed: false, id: Date.now()}],
-      newTask: "", // clears input field when button is clicked eventually
+      todos: [...state.todos, {task: action.payload, completed: false, id: Date.now()}], 
+      newTask: "", 
     };
     case CHANGE_INPUT_TEXT:
     return {
       ...state,
       newTask: action.payload
     };
+    case TOGGLE_TASK:
+    // map through state.todos
+    // if todo's id at current iteration matches action.payload (id)
+    // return new todo object - but spread in old todo object
+    // toggle todo's 'completed' property (keep immutable)
+    // else return member untouched
+    return {
+      ...state,
+      todos: state.todos.map(todo => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo, 
+            completed: !todo.completed
+          }
+        }
+        return todo;
+      })
+
+    }
     default:
     return state;
   }

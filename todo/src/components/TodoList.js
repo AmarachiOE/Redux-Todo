@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { toggleTask } from "../actions";
 
 
 const TodoList = props => {
@@ -7,7 +8,13 @@ const TodoList = props => {
         <div>
             <div className="todo-list">
                 {props.todos.map( todo => (
-                    <h2 key={todo.id}>{todo.task}  {todo.completed.toString()} </h2>
+                    <h2 
+                    key={todo.id}
+                    onClick={id => {
+                        props.toggleTask(todo.id);
+                      }}>
+                        {todo.task}  {todo.completed.toString()} 
+                    </h2>
                 ))}
             </div>
         </div>
@@ -24,5 +31,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps, 
-    {}
+    {toggleTask}
     )(TodoList);

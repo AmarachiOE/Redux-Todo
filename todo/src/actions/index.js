@@ -1,5 +1,6 @@
 export const ADD_NEW_TODO = "ADD_NEW_TODO";
 export const CHANGE_INPUT_TEXT = "CHANGE_INPUT_TEXT" 
+export const TOGGLE_TASK = "TOGGLE_TASK"
 
 export const addNewTodo = newTodoTask => {
     // i.e. onSubmit event handler
@@ -16,5 +17,13 @@ export const changeInputText = action => {
     return {
         type: CHANGE_INPUT_TEXT,
         payload: action
+    };
+};
+
+export const toggleTask = id => {
+    console.log(id);
+    return {
+        type: TOGGLE_TASK,
+        payload: id
     };
 };

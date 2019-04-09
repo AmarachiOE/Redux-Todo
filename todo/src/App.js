@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { addNewTodo, changeInputText } from "./actions";
 
-import Todo from "./components/Todo";
 import TodoList from "./components/TodoList";
 import './App.css';
 
@@ -12,7 +11,6 @@ const App = props => {
     return (
       <div className="App">
       <h1>Your Todos</h1>
-      {/* <Todo todos={props.todos}/> */}
       <TodoList/>
       <input
             type="string"
