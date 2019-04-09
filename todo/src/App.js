@@ -10,33 +10,37 @@ import "./App.css";
 const App = props => {
   return (
     <div className="App">
-      <h1>Your Todos</h1>
-      <TodoList />
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          props.addNewTodo(props.newTask);
-        }}
-      >
-        <input
-          type="string"
-          name="newTask"
-          value={props.newTask}
-          placeholder="What else?"
-          onChange={e => {
-            props.changeInputText(e.target.value);
+      <div className="container">
+        <h1>Your Todos:</h1>
+        <TodoList />
+        <form
+          className="todo-form"
+          onSubmit={e => {
+            e.preventDefault();
+            props.addNewTodo(props.newTask);
           }}
-        />
-        <button>Add Item</button>
-      </form>
-      <button
-        onClick={e => {
-          e.preventDefault();
-          props.clearCompleted();
-        }}
-      >
-        Clear Completed
-      </button>
+        >
+          <input
+            type="string"
+            name="newTask"
+            value={props.newTask}
+            placeholder="What else?"
+            onChange={e => {
+              props.changeInputText(e.target.value);
+            }}
+          />
+          <button className="btn">Add Item</button>
+        </form>
+        <button
+        className="btn"
+          onClick={e => {
+            e.preventDefault();
+            props.clearCompleted();
+          }}
+        >
+          Clear Completed Items
+        </button>
+      </div>
     </div>
   );
 };

@@ -4,31 +4,36 @@ import { toggleTask, deleteTask } from "../actions";
 
 const TodoList = props => {
   return (
-    <div>
-      <div className="todo-list">
+      <div className="todo-list-container">
         {props.todos.map(todo => (
-          <div className="each-todo">
+          <div 
+          className="each-todo">
+          
+          {/* add className "completed" if todo completed property is true */}
             <h2
+            className={todo.completed ? "completed" : null}
               key={todo.id}
               onClick={id => {
                 props.toggleTask(todo.id);
               }}
             >
-              {todo.task} {todo.completed.toString()}
+              {todo.task} 
+              {/* removed completed state from being display */}
+              {/* {todo.completed.toString()} */}
             </h2>
-            <button 
+            <p 
+            className="delete-btn"
                 onClick={id => {
                     if (window.confirm(`Are you sure you want to delete ${todo.task} from your todo list?`)) {
                         props.deleteTask(todo.id);
                     }
                     
                 }}>
-                Delete
-            </button>
+                X
+            </p>
           </div>
         ))}
       </div>
-    </div>
   );
 };
 
