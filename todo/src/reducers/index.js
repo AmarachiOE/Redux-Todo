@@ -1,5 +1,5 @@
 // import ACTION-TYPES
-import { ADD_NEW_TODO, CHANGE_INPUT_TEXT, TOGGLE_TASK } from "../actions";
+import { ADD_NEW_TODO, CHANGE_INPUT_TEXT, TOGGLE_TASK, DELETE_TASK } from "../actions";
 
 const initialState = {
     todos: [
@@ -54,7 +54,16 @@ const rootReducer = (state = initialState, action) => {
         }
         return todo;
       })
-
+    }
+    case DELETE_TASK:
+    return {
+      ...state,
+      todos: state.todos.filter(todo => {
+        if (todo.id !== action.payload) {
+          return todo
+        }
+        return console.log("Deleted", {todo});
+      })
     }
     default:
     return state;

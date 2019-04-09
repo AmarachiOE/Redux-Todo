@@ -1,35 +1,39 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
-import { toggleTask } from "../actions";
-
+import { toggleTask, deleteTask } from "../actions";
 
 const TodoList = props => {
-    return (
-        <div>
-            <div className="todo-list">
-                {props.todos.map( todo => (
-                    <h2 
-                    key={todo.id}
-                    onClick={id => {
-                        props.toggleTask(todo.id);
-                      }}>
-                        {todo.task}  {todo.completed.toString()} 
-                    </h2>
-                ))}
-            </div>
-        </div>
-    )
-}
+  return (
+    <div>
+      <div className="todo-list">
+        {props.todos.map(todo => (
+          <div className="each-todo">
+            <h2
+              key={todo.id}
+              onClick={id => {
+                props.toggleTask(todo.id);
+              }}
+            >
+              {todo.task} {todo.completed.toString()}
+            </h2>
+            <button onClick={id => {props.deleteTask(todo.id)}}>Delete</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 // Need to connect this component to the redux store
 // implicit return: const mSTP = state => {( todos: state.todos )};
 const mapStateToProps = state => {
-    return {
-        todos: state.todos,
-    }
+    console.log("From mSTP TodoList", state);
+  return {
+    todos: state.todos
+  };
 };
 
 export default connect(
-    mapStateToProps, 
-    {toggleTask}
-    )(TodoList);
+  mapStateToProps,
+  { toggleTask, deleteTask }
+)(TodoList);

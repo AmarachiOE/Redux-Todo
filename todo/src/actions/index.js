@@ -1,6 +1,7 @@
 export const ADD_NEW_TODO = "ADD_NEW_TODO";
-export const CHANGE_INPUT_TEXT = "CHANGE_INPUT_TEXT" 
-export const TOGGLE_TASK = "TOGGLE_TASK"
+export const CHANGE_INPUT_TEXT = "CHANGE_INPUT_TEXT" ;
+export const TOGGLE_TASK = "TOGGLE_TASK";
+export const DELETE_TASK = "DELETE_TASK";
 
 export const addNewTodo = newTodoTask => {
     // i.e. onSubmit event handler
@@ -27,3 +28,10 @@ export const toggleTask = id => {
         payload: id
     };
 };
+
+export const deleteTask = id => {
+    return {
+        type: DELETE_TASK,
+        payload: id
+    }
+}
