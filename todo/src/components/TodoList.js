@@ -16,13 +16,32 @@ const TodoList = props => {
             >
               {todo.task} {todo.completed.toString()}
             </h2>
-            <button onClick={id => {props.deleteTask(todo.id)}}>Delete</button>
+            <button 
+                onClick={id => {
+                    if (window.confirm(`Are you sure you want to delete ${todo.task} from your todo list?`)) {
+                        props.deleteTask(todo.id);
+                    }
+                    
+                }}>
+                Delete
+            </button>
           </div>
         ))}
       </div>
     </div>
   );
 };
+
+
+/* 
+
+if (window.confirm(`Are you sure you want to delete ${props.smurf.name}`)) {
+      props.deleteSmurf(props.smurf.id);
+    }
+
+
+
+*/
 
 // Need to connect this component to the redux store
 // implicit return: const mSTP = state => {( todos: state.todos )};
