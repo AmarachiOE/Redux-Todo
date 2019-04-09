@@ -1,5 +1,5 @@
 // import ACTION-TYPES
-import { ADD_NEW_TODO, CHANGE_INPUT_TEXT, TOGGLE_TASK, DELETE_TASK } from "../actions";
+import { ADD_NEW_TODO, CHANGE_INPUT_TEXT, TOGGLE_TASK, DELETE_TASK, CLEAR_COMPLETED } from "../actions";
 
 const initialState = {
     todos: [
@@ -63,6 +63,16 @@ const rootReducer = (state = initialState, action) => {
           return todo
         }
         return console.log("Deleted", {todo});
+      })
+    }
+    case CLEAR_COMPLETED:
+    return {
+      ...state,
+      todos: state.todos.filter(todo => {
+        if (todo.completed === false) { // if the the completed property on the todo item is false, keep the todo
+          return todo
+        }
+        return console.log("Cleared Todo", {todo});
       })
     }
     default:

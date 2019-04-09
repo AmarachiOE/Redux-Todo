@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addNewTodo, changeInputText } from "./actions";
+import { addNewTodo, changeInputText, clearCompleted } from "./actions";
 
 import TodoList from "./components/TodoList";
 import './App.css';
@@ -25,8 +25,15 @@ const App = props => {
           props.addNewTodo(props.newTask);
         }}
       >
-      Add Item</button>
-      <button>Delete</button>
+      Add Item
+      </button>
+      <button
+      onClick={e => {
+        e.preventDefault();
+        props.clearCompleted();
+      }}
+      >
+      Clear Completed</button>
       
       </div>
     );
@@ -43,5 +50,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {addNewTodo, changeInputText}
+  { addNewTodo, changeInputText, clearCompleted }
 )(App);
