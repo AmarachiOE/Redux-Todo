@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 function Todo(props) {
   return (
@@ -10,4 +11,4 @@ function Todo(props) {
   );
 }
 
-export default Todo;
+export default connect(null, {})(Todo);
