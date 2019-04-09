@@ -26,7 +26,7 @@ const rootReducer = (state = initialState, action) => {
     return {
       ...state,
       todos: [...state.todos, {task: action.payload, completed: false, id: Date.now()}],
-      newTask: "", // clears input field
+      newTask: "", // clears input field when button is clicked eventually
     };
     case CHANGE_INPUT_TEXT:
     return {

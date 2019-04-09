@@ -18,13 +18,13 @@ const App = props => {
             type="string"
             name="newTask"
             value={props.newTask}
-            placeholder="What's else?"
+            placeholder="What else?"
             onChange={e => {props.changeInputText(e.target.value)}}
           />
       <button
         onClick={e => {
           e.preventDefault();
-          props.addNewTodo();
+          props.addNewTodo(props.newTask);
         }}
       >
       Add Item</button>
